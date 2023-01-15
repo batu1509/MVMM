@@ -2,47 +2,56 @@ package com.batueksi.tekrar
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Layout
-import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import com.batueksi.tekrar.adapter.PopularMoviesAdapter
+import com.batueksi.tekrar.adapter.ContentAdapter
+import com.batueksi.tekrar.adapter.ListAdapter
 import com.batueksi.tekrar.databinding.ActivityMainBinding
-import com.batueksi.tekrar.models.PopularMovie
-import com.batueksi.tekrar.viewmodel.PopularMoviesViewModel
+import com.batueksi.tekrar.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
-    private val viewModel: PopularMoviesViewModel by viewModels()
-    private lateinit var popularMoviesAdapter: PopularMoviesAdapter
+    private val viewModel: MainViewModel by viewModels()
+//    private lateinit var contentAdapter: ContentAdapter
+    private lateinit var adapter: ListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
-
+//        supportActionBar?.hide()
         setUpRv()
+        observeData()
+    }
+
+    private fun observeData() {
+        viewModel.liveData.observe(this) { contentList ->
+            adapter.differ.submitList(contentList)
+        }
     }
 
     private fun setUpRv(){
-        popularMoviesAdapter = PopularMoviesAdapter()
-
-        binding.recyclerView.apply {
-            adapter = popularMoviesAdapter
-            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-
-            setHasFixedSize(true)
+        adapter = ListAdapter()
+        binding.recyclerviewLists.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = this@MainActivity.adapter
         }
+//        contentAdapter = ContentAdapter()
 
-        viewModel.responsePopularMovies.observe(this,{listPopularMovie->
-
-            popularMoviesAdapter.PopularMovies = listPopularMovie
-
-        })
+//        binding.recyclerView.apply {
+//            adapter = popularMoviesAdapter
+//            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+//
+//            setHasFixedSize(true)
+//        }
+//
+//        viewModel.responsePopularMovies.observe(this,{listPopularMovie->
+//
+//            popularMoviesAdapter.PopularMovies = listPopularMovie
+//
+//        })
     }
 }
