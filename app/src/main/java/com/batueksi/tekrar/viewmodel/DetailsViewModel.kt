@@ -10,24 +10,14 @@ import com.batueksi.tekrar.repository.ContentsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+
 @HiltViewModel
-class MainViewModel @Inject constructor(
-    private val repository: ContentsRepository
-): ViewModel() {
-    private var _liveData = MutableLiveData<List<ContentList>>()
-    val liveData = _liveData as LiveData<List<ContentList>>
+class DetailsViewModel @Inject constructor(private val repository: ContentsRepository):ViewModel() {
 
-    init {
-        getAllContents()
-    }
+    private val detaildata = MutableLiveData<List<MovieDetailsModel>>()
 
-    private fun getAllContents() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val result = repository.getAllLists()
-            _liveData.postValue(result)
-        }
-    }
+
+
 }

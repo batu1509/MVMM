@@ -16,6 +16,7 @@ class ContentAdapter: RecyclerView.Adapter<ContentAdapter.MyViewHolder>() {
         fun bind(content: Content) {
             binding.apply {
                 textView.text =  content.title
+                textView2.text = content.vote_avarage.toString()
                 imageView.load("https://image.tmdb.org/t/p/w500${content.imagePath}"){
                     crossfade(true)
                     crossfade(1000)

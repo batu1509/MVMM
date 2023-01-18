@@ -4,6 +4,8 @@ import com.batueksi.tekrar.api.ApiService
 import com.batueksi.tekrar.helper.Constants
 import com.batueksi.tekrar.models.ContentList
 import com.batueksi.tekrar.models.ResultXX
+import com.batueksi.tekrar.models.detailsmodel.Genre
+import com.batueksi.tekrar.models.detailsmodel.MovieDetailsModel
 import com.batueksi.tekrar.util.toContentList
 import com.batueksi.tekrar.util.toContentList1
 import javax.inject.Inject
@@ -33,6 +35,15 @@ class ContentsRepository @Inject constructor(private val apiService: ApiService)
         else
             emptyList()
     }
+
+    private suspend fun getDetailsMovies(): List<Genre> {
+        val response = apiService.GetDetailsMovies(Constants.apikey)
+        return if (response.body() != null)
+            response.body()!!.genres
+        else
+            emptyList()
+    }
+
 
     suspend fun getAllLists(): List<ContentList> {
         val popularMovies = getPopularMovies()

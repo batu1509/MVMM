@@ -8,14 +8,16 @@ import com.batueksi.tekrar.models.ResultXX
 fun Result.toContent(): Content {
     return Content(
         title = title ?: "",
-        imagePath = backdrop_path ?: ""
+        imagePath = backdrop_path ?: "",
+        vote_avarage = (vote_average ?: "") as Double
     )
 }
 
 fun ResultXX.toContent(): Content {
     return Content(
         title = name ?: "",
-        imagePath = backdrop_path ?: ""
+        imagePath = backdrop_path ?: "",
+        vote_avarage = (vote_average ?: "") as Double
     )
 }
 
