@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailsViewModel @Inject constructor(private val repository: ContentsRepository):ViewModel() {
 
-    private val detaildata = MutableLiveData<List<MovieDetailsModel>>()
+
 
 
 
