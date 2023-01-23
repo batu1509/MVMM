@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,34 +10,29 @@
 
     <ImageView
         android:id="@+id/detailsImageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/detailsViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent">
 
     </ImageView>
 
     <TextView
         android:id="@+id/detailsViewTitle"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="5dp"
-        android:layout_marginBottom="284dp"
-        android:gravity="center"
+        android:layout_height="50dp"
+        android:gravity="left"
         android:text="Test"
         android:textColor="@color/white"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/detailsViewDates"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailsImageView"
-        app:layout_constraintVertical_bias="0.067">
+        app:layout_constraintVertical_bias="0.765">
 
     </TextView>
 
@@ -46,35 +40,31 @@
         android:id="@+id/detailsViewDates"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_margin="5dp"
-        android:gravity="center"
+        android:layout_marginBottom="24dp"
+        android:gravity="left"
         android:text="Test"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/detailsViewDescription"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsImageView"
-        app:layout_constraintVertical_bias="0.265">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
     </TextView>
 
     <TextView
         android:id="@+id/detailsViewDescription"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="5dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:text="Test"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsImageView"
-        app:layout_constraintVertical_bias="0.987">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
     </TextView>
 

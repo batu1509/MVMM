@@ -6,8 +6,10 @@ import com.batueksi.tekrar.models.ContentList
 import com.batueksi.tekrar.models.ResultXX
 import com.batueksi.tekrar.models.detailsmodel.Genre
 import com.batueksi.tekrar.models.detailsmodel.MovieDetailsModel
+import com.batueksi.tekrar.models.tvshowdetailsmodel.TvShowDetails
 import com.batueksi.tekrar.util.toContentList
 import com.batueksi.tekrar.util.toContentList1
+import java.sql.RowId
 import javax.inject.Inject
 
 class ContentsRepository @Inject constructor(private val apiService: ApiService) {
@@ -36,13 +38,23 @@ class ContentsRepository @Inject constructor(private val apiService: ApiService)
             emptyList()
     }
 
-    private suspend fun getDetailsMovies(): List<Genre> {
-        val response = apiService.GetDetailsMovies(Constants.apikey)
-        return if (response.body() != null)
-            response.body()!!.genres
-        else
-            emptyList()
+
+    suspend fun getDetailsMovies(movieId: String): MovieDetailsModel? {
+        val response = apiService.GetDetailsMovies(movieId, Constants.apikey)
+        if (response.body() != null) {
+            return response.body()!!
+        }
+        return null
     }
+
+    suspend fun getDetailsTvShows(tvId: String): TvShowDetails? {
+        val response = apiService.GetDetailsTvShows(tvId, Constants.apikey)
+        if (response.body() != null) {
+            return response.body()!!
+        }
+        return null
+    }
+
 
 
     suspend fun getAllLists(): List<ContentList> {

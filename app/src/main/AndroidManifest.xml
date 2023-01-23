@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".helper.MyApplication"
@@ -17,13 +16,22 @@
         android:theme="@style/Theme.Tekrar"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashScreen"
+            android:theme="@style/Theme.Design.Light.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
 
             <meta-data
                 android:name="android.app.lib_name"

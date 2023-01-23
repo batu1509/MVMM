@@ -7,6 +7,7 @@ import com.batueksi.tekrar.models.ResultXX
 
 fun Result.toContent(): Content {
     return Content(
+        id = (id ?: "") as Int,
         title = title ?: "",
         imagePath = backdrop_path ?: "",
         vote_avarage = (vote_average ?: "") as Double
@@ -15,6 +16,7 @@ fun Result.toContent(): Content {
 
 fun ResultXX.toContent(): Content {
     return Content(
+        id = (id ?: "") as Int,
         title = name ?: "",
         imagePath = backdrop_path ?: "",
         vote_avarage = (vote_average ?: "") as Double

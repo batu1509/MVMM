@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.batueksi.tekrar.databinding.ListRowBinding
+import com.batueksi.tekrar.models.Content
 import com.batueksi.tekrar.models.ContentList
 
-class ListAdapter : Adapter<ListAdapter.ListViewHolder>(){
+class ListAdapter(val onItemClick: (Content) -> Unit) : Adapter<ListAdapter.ListViewHolder>(){
 
     private val diffcalback = object : DiffUtil.ItemCallback<ContentList>(){
         override fun areItemsTheSame(oldItem: ContentList, newItem: ContentList): Boolean {
@@ -29,7 +30,7 @@ class ListAdapter : Adapter<ListAdapter.ListViewHolder>(){
     inner class ListViewHolder(private val binding: ListRowBinding): ViewHolder(binding.root) {
         fun bind(list: ContentList) {
             binding.listTitle.text = list.title
-            val contentAdapter = ContentAdapter()
+            val contentAdapter = ContentAdapter(onItemClick)
             contentAdapter.differ.submitList(list.contents)
             binding.recyclerviewMovies.layoutManager = LinearLayoutManager(binding.root.context, RecyclerView.HORIZONTAL, false)
             binding.recyclerviewMovies.adapter = contentAdapter

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.viewModels
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,7 +43,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpRv() {
-        adapter = ListAdapter()
+        adapter = ListAdapter{Content ->
+            findNavController().navigate(R.id.action_homeFragment2_to_detailsFragment, bundleOf("content_arg" to Content.id))
+        }
         binding.recyclerviewLists.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = this@HomeFragment.adapter
