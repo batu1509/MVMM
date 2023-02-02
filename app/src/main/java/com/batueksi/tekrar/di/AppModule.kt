@@ -1,6 +1,6 @@
 package com.batueksi.tekrar.di
 
-import com.batueksi.tekrar.api.ApiService
+import com.batueksi.tekrar.data.api.ApiService
 import com.batueksi.tekrar.helper.Constants
 import dagger.Module
 import dagger.Provides
@@ -22,7 +22,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRetrofitInstance(baseURL:String):ApiService {
+    fun provideRetrofitInstance(baseURL:String): ApiService {
         val logging = HttpLoggingInterceptor()
         logging.setLevel(HttpLoggingInterceptor.Level.BODY)
         val client: OkHttpClient = OkHttpClient.Builder()

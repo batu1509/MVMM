@@ -1,12 +1,12 @@
 package com.batueksi.tekrar.util
 
-import com.batueksi.tekrar.models.Content
-import com.batueksi.tekrar.models.ContentList
-import com.batueksi.tekrar.models.Result
-import com.batueksi.tekrar.models.ResultXX
+import com.batueksi.tekrar.data.models.Content
+import com.batueksi.tekrar.data.models.ContentList
+import com.batueksi.tekrar.data.models.Result
+import com.batueksi.tekrar.data.models.ResultXX
 
-fun Result.toContent(): Content {
-    return Content(
+fun com.batueksi.tekrar.data.models.Result.toContent(): com.batueksi.tekrar.data.models.Content {
+    return com.batueksi.tekrar.data.models.Content(
         id = (id ?: "") as Int,
         title = title ?: "",
         imagePath = backdrop_path ?: "",
@@ -14,8 +14,8 @@ fun Result.toContent(): Content {
     )
 }
 
-fun ResultXX.toContent(): Content {
-    return Content(
+fun com.batueksi.tekrar.data.models.ResultXX.toContent(): com.batueksi.tekrar.data.models.Content {
+    return com.batueksi.tekrar.data.models.Content(
         id = (id ?: "") as Int,
         title = name ?: "",
         imagePath = backdrop_path ?: "",
@@ -23,15 +23,15 @@ fun ResultXX.toContent(): Content {
     )
 }
 
-fun List<Result>.toContentList(title: String): ContentList {
-    return ContentList(
+fun List<com.batueksi.tekrar.data.models.Result>.toContentList(title: String): com.batueksi.tekrar.data.models.ContentList {
+    return com.batueksi.tekrar.data.models.ContentList(
         title = title,
         contents = map { it.toContent() }
     )
 }
 
-fun List<ResultXX>.toContentList1(title: String): ContentList {
-    return ContentList(
+fun List<com.batueksi.tekrar.data.models.ResultXX>.toContentList1(title: String): com.batueksi.tekrar.data.models.ContentList {
+    return com.batueksi.tekrar.data.models.ContentList(
         title = title,
         contents = map { it.toContent() }
     )

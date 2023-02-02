@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "836006241118",
+    "project_id": "mvmm-movie",
+    "storage_bucket": "mvmm-movie.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836006241118:android:24ed131428775c6953a5cf",
+        "android_client_info": {
+          "package_name": "com.batueksi.tekrar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836006241118-8eitfc4003ai2mugpphk0qtg5vsc4oic.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUNJHj1jsYQRZrFMfKWmwIoOMIQO3iwGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836006241118-8eitfc4003ai2mugpphk0qtg5vsc4oic.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
