@@ -4,12 +4,10 @@ import com.batueksi.tekrar.data.api.ApiService
 import com.batueksi.tekrar.helper.Constants
 import com.batueksi.tekrar.data.models.ContentList
 import com.batueksi.tekrar.data.models.ResultXX
-import com.batueksi.tekrar.data.models.detailsmodel.Genre
 import com.batueksi.tekrar.data.models.detailsmodel.MovieDetailsModel
 import com.batueksi.tekrar.data.models.tvshowdetailsmodel.TvShowDetails
 import com.batueksi.tekrar.util.toContentList
 import com.batueksi.tekrar.util.toContentList1
-import java.sql.RowId
 import javax.inject.Inject
 
 class ContentsRepository @Inject constructor(private val apiService: ApiService) {
@@ -22,7 +20,7 @@ class ContentsRepository @Inject constructor(private val apiService: ApiService)
             emptyList()
     }
 
-    private suspend fun getPopularTvShows(): List<com.batueksi.tekrar.data.models.ResultXX> {
+    private suspend fun getPopularTvShows(): List<ResultXX> {
         val response = apiService.GetPopularTvShows(Constants.apikey)
         return if (response.body() != null)
             response.body()!!.results
@@ -39,7 +37,7 @@ class ContentsRepository @Inject constructor(private val apiService: ApiService)
     }
 
 
-    suspend fun getDetailsMovies(movieId: String): com.batueksi.tekrar.data.models.detailsmodel.MovieDetailsModel? {
+    suspend fun getDetailsMovies(movieId: String): MovieDetailsModel? {
         val response = apiService.GetDetailsMovies(movieId, Constants.apikey)
         if (response.body() != null) {
             return response.body()!!
@@ -47,7 +45,7 @@ class ContentsRepository @Inject constructor(private val apiService: ApiService)
         return null
     }
 
-    suspend fun getDetailsTvShows(tvId: String): com.batueksi.tekrar.data.models.tvshowdetailsmodel.TvShowDetails? {
+    suspend fun getDetailsTvShows(tvId: String): TvShowDetails? {
         val response = apiService.GetDetailsTvShows(tvId, Constants.apikey)
         if (response.body() != null) {
             return response.body()!!
@@ -57,7 +55,7 @@ class ContentsRepository @Inject constructor(private val apiService: ApiService)
 
 
 
-    suspend fun getAllLists(): List<com.batueksi.tekrar.data.models.ContentList> {
+    suspend fun getAllLists(): List<ContentList> {
         val popularMovies = getPopularMovies()
         val tvShows = getPopularTvShows()
         val upComingMovies = getUpcomingMovies()

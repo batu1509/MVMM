@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0E1851"
     tools:context=".presentation.fragment.DetailsFragment">
 
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/detailsImageView"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-
-        android:layout_marginTop="16dp"
+        android:layout_height="@dimen/movie_detail_poster_image_size"
+        android:layout_marginTop="8dp"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,52 +30,78 @@
 
     </ImageView>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/detailsViewTitle"
+        style="@style/Details.Title"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="left"
-        android:text="Test"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/detailsViewDates"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailsImageView"
-        app:layout_constraintVertical_bias="0.765">
+        tools:text="Avatar">
 
-    </TextView>
+    </com.google.android.material.textview.MaterialTextView>
 
-    <TextView
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@style/RatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:numStars="10"
+        app:layout_constraintStart_toStartOf="@+id/detailsViewTitle"
+        app:layout_constraintTop_toBottomOf="@+id/detailsViewTitle"
+        tools:rating="8.35" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/detailsVoteAverage"
+        style="@style/MVMM.Subtitle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
+        app:layout_constraintStart_toEndOf="@+id/ratingBar"
+        app:layout_constraintTop_toTopOf="@+id/ratingBar"
+        tools:text="4.35 (1.19 k reviews)" />
+
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/detailsViewDates"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginBottom="24dp"
-        android:gravity="left"
-        android:text="Test"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/detailsViewDescription"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium_margin"
+        app:layout_constraintStart_toStartOf="@+id/ratingBar"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+        tools:text="2021-12-15" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/titleOverview"
+        style="@style/Details.Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/overview"
+        app:layout_constraintEnd_toEndOf="@+id/detailsViewTitle"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </TextView>
-
-    <TextView
-        android:id="@+id/detailsViewDescription"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginBottom="16dp"
-        android:gravity="center"
-        android:text="Test"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </TextView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsViewDates" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailsViewDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/medium_padding"
+            android:paddingEnd="0dp"
+            app:layout_constraintEnd_toEndOf="@+id/titleOverview"
+            app:layout_constraintStart_toStartOf="@+id/titleOverview"
+            app:layout_constraintTop_toBottomOf="@id/titleOverview"
+            tools:text="A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home." />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

@@ -3,7 +3,6 @@ package com.batueksi.tekrar.domain.repository
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*
-import com.batueksi.tekrar.helper.Constants.LOCALE_KEY
 import com.batueksi.tekrar.helper.Constants.UI_MODE_KEY
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -18,7 +17,6 @@ class DataOperationsImpl @Inject constructor(
 
 
     private object PreferencesKey {
-        val localeKey = stringPreferencesKey(LOCALE_KEY)
         val uiModeKey = intPreferencesKey(UI_MODE_KEY)
     }
 

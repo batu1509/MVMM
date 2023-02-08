@@ -38,6 +38,8 @@ class DetailsFragment : Fragment() {
             binding.detailsViewTitle.text = moviemodel.title
             binding.detailsViewDates.text = moviemodel.release_date
             binding.detailsViewDescription.text = moviemodel.overview
+            binding.ratingBar.rating = moviemodel.vote_average.toFloat()
+            binding.detailsVoteAverage.text = moviemodel.vote_average.toString()
             binding.detailsImageView.load("https://image.tmdb.org/t/p/w500${moviemodel.backdrop_path}"){
                 crossfade(true)
                 crossfade(1000)
@@ -48,6 +50,8 @@ class DetailsFragment : Fragment() {
             binding.detailsViewTitle.text = tvmodel.name
             binding.detailsViewDates.text = tvmodel.last_air_date
             binding.detailsViewDescription.text = tvmodel.overview
+            binding.ratingBar.rating = tvmodel.vote_average.toFloat()
+            binding.detailsVoteAverage.text = tvmodel.vote_average.toString()
             binding.detailsImageView.load("https://image.tmdb.org/t/p/w500${tvmodel.backdrop_path}"){
                 crossfade(true)
                 crossfade(1000)

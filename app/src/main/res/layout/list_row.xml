@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#0E1851"
     android:orientation="vertical">
 
     <TextView
@@ -10,8 +9,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Popular Movies"
-        android:textColor="@color/white"
-        android:textSize="25sp"
+        android:paddingStart="1dp"
+        android:layout_marginStart="1dp"
+        style="@style/MVMM.Title"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView

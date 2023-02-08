@@ -10,13 +10,12 @@ import coil.load
 import com.batueksi.tekrar.databinding.RecyclerRowBinding
 import com.batueksi.tekrar.data.models.Content
 
-class ContentAdapter(val onItemClick: (com.batueksi.tekrar.data.models.Content) -> Unit): RecyclerView.Adapter<ContentAdapter.MyViewHolder>() {
+class ContentAdapter(val onItemClick: (Content) -> Unit): RecyclerView.Adapter<ContentAdapter.MyViewHolder>() {
 
-    inner class MyViewHolder(private val binding: RecyclerRowBinding, val onItemClick: (com.batueksi.tekrar.data.models.Content) -> Unit): ViewHolder(binding.root) {
-        fun bind(content: com.batueksi.tekrar.data.models.Content) {
+    inner class MyViewHolder(private val binding: RecyclerRowBinding, val onItemClick: (Content) -> Unit): ViewHolder(binding.root) {
+        fun bind(content: Content) {
             binding.apply {
                 textView.text =  content.title
-                textView2.text = content.vote_avarage.toString()
                 imageView.load("https://image.tmdb.org/t/p/w500${content.imagePath}"){
                     crossfade(true)
                     crossfade(1000)
@@ -28,12 +27,12 @@ class ContentAdapter(val onItemClick: (com.batueksi.tekrar.data.models.Content) 
         }
     }
 
-    private val diffcalback = object : DiffUtil.ItemCallback<com.batueksi.tekrar.data.models.Content>(){
-        override fun areItemsTheSame(oldItem: com.batueksi.tekrar.data.models.Content, newItem: com.batueksi.tekrar.data.models.Content): Boolean {
+    private val diffcalback = object : DiffUtil.ItemCallback<Content>(){
+        override fun areItemsTheSame(oldItem: Content, newItem: Content): Boolean {
             return oldItem.title == newItem.title
         }
 
-        override fun areContentsTheSame(oldItem: com.batueksi.tekrar.data.models.Content, newItem: com.batueksi.tekrar.data.models.Content): Boolean {
+        override fun areContentsTheSame(oldItem: Content, newItem: Content): Boolean {
             return newItem == oldItem
         }
 

@@ -5,33 +5,35 @@ import com.batueksi.tekrar.data.models.ContentList
 import com.batueksi.tekrar.data.models.Result
 import com.batueksi.tekrar.data.models.ResultXX
 
-fun com.batueksi.tekrar.data.models.Result.toContent(): com.batueksi.tekrar.data.models.Content {
-    return com.batueksi.tekrar.data.models.Content(
+fun Result.toContent(): Content {
+    return Content(
         id = (id ?: "") as Int,
         title = title ?: "",
         imagePath = backdrop_path ?: "",
+        vote_count = (vote_count ?: "") as Int,
         vote_avarage = (vote_average ?: "") as Double
     )
 }
 
-fun com.batueksi.tekrar.data.models.ResultXX.toContent(): com.batueksi.tekrar.data.models.Content {
-    return com.batueksi.tekrar.data.models.Content(
+fun ResultXX.toContent(): Content {
+    return Content(
         id = (id ?: "") as Int,
         title = name ?: "",
         imagePath = backdrop_path ?: "",
+        vote_count = (vote_count ?: "") as Int,
         vote_avarage = (vote_average ?: "") as Double
     )
 }
 
-fun List<com.batueksi.tekrar.data.models.Result>.toContentList(title: String): com.batueksi.tekrar.data.models.ContentList {
-    return com.batueksi.tekrar.data.models.ContentList(
+fun List<Result>.toContentList(title: String): ContentList {
+    return ContentList(
         title = title,
         contents = map { it.toContent() }
     )
 }
 
-fun List<com.batueksi.tekrar.data.models.ResultXX>.toContentList1(title: String): com.batueksi.tekrar.data.models.ContentList {
-    return com.batueksi.tekrar.data.models.ContentList(
+fun List<ResultXX>.toContentList1(title: String): ContentList {
+    return ContentList(
         title = title,
         contents = map { it.toContent() }
     )

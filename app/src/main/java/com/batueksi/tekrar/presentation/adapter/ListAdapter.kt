@@ -12,14 +12,14 @@ import com.batueksi.tekrar.databinding.ListRowBinding
 import com.batueksi.tekrar.data.models.Content
 import com.batueksi.tekrar.data.models.ContentList
 
-class ListAdapter(val onItemClick: (com.batueksi.tekrar.data.models.Content) -> Unit) : Adapter<ListAdapter.ListViewHolder>(){
+class ListAdapter(val onItemClick: (Content) -> Unit) : Adapter<ListAdapter.ListViewHolder>(){
 
-    private val diffcalback = object : DiffUtil.ItemCallback<com.batueksi.tekrar.data.models.ContentList>(){
-        override fun areItemsTheSame(oldItem: com.batueksi.tekrar.data.models.ContentList, newItem: com.batueksi.tekrar.data.models.ContentList): Boolean {
+    private val diffcalback = object : DiffUtil.ItemCallback<ContentList>(){
+        override fun areItemsTheSame(oldItem: ContentList, newItem: ContentList): Boolean {
             return oldItem.title == newItem.title
         }
 
-        override fun areContentsTheSame(oldItem: com.batueksi.tekrar.data.models.ContentList, newItem: com.batueksi.tekrar.data.models.ContentList): Boolean {
+        override fun areContentsTheSame(oldItem: ContentList, newItem: ContentList): Boolean {
             return newItem == oldItem
         }
 
@@ -28,7 +28,7 @@ class ListAdapter(val onItemClick: (com.batueksi.tekrar.data.models.Content) -> 
     val differ = AsyncListDiffer(this, diffcalback)
 
     inner class ListViewHolder(private val binding: ListRowBinding): ViewHolder(binding.root) {
-        fun bind(list: com.batueksi.tekrar.data.models.ContentList) {
+        fun bind(list: ContentList) {
             binding.listTitle.text = list.title
             val contentAdapter = ContentAdapter(onItemClick)
             contentAdapter.differ.submitList(list.contents)
