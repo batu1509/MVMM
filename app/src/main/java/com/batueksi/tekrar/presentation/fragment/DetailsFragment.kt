@@ -25,7 +25,7 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
-
+        setupToolbar()
         return binding.root
 
     }
@@ -58,6 +58,14 @@ class DetailsFragment : Fragment() {
             }
         }
 
+    }
+
+    private fun setupToolbar() {
+        binding.genericToolbar.apply {
+            setNavigationOnClickListener {
+                requireActivity().onBackPressed()
+            }
+        }
     }
 
 }

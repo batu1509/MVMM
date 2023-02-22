@@ -1,5 +1,6 @@
 package com.batueksi.tekrar.presentation.fragment
 
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,10 +16,11 @@ import com.batueksi.tekrar.databinding.FragmentHomeBinding
 import com.batueksi.tekrar.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private lateinit var binding : FragmentHomeBinding
+    private lateinit var binding: FragmentHomeBinding
     private val viewModel: MainViewModel by viewModels()
     private lateinit var adapter: ListAdapter
 
@@ -26,18 +28,19 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(inflater,container,false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         setUpRv()
         observeData()
         return binding.root
-
     }
+
 
     private fun observeData() {
         viewModel.liveData.observe(viewLifecycleOwner) { contentList ->
             adapter.differ.submitList(contentList)
         }
+
     }
 
     private fun setUpRv() {
@@ -50,3 +53,4 @@ class HomeFragment : Fragment() {
         }
     }
 }
+

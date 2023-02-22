@@ -12,96 +12,117 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/detailsImageView"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/movie_detail_poster_image_size"
-        android:layout_marginTop="8dp"
-        android:importantForAccessibility="no"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </ImageView>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/detailsViewTitle"
-        style="@style/Details.Title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/medium_margin"
-        android:layout_marginEnd="@dimen/medium_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsImageView"
-        tools:text="Avatar">
-
-    </com.google.android.material.textview.MaterialTextView>
-
-    <RatingBar
-        android:id="@+id/ratingBar"
-        style="@style/RatingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/medium_margin"
-        android:layout_marginTop="@dimen/small_margin"
-        android:numStars="10"
-        app:layout_constraintStart_toStartOf="@+id/detailsViewTitle"
-        app:layout_constraintTop_toBottomOf="@+id/detailsViewTitle"
-        tools:rating="8.35" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/detailsVoteAverage"
-        style="@style/MVMM.Subtitle1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/medium_margin"
-        app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
-        app:layout_constraintStart_toEndOf="@+id/ratingBar"
-        app:layout_constraintTop_toTopOf="@+id/ratingBar"
-        tools:text="4.35 (1.19 k reviews)" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/detailsViewDates"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/medium_margin"
-        app:layout_constraintStart_toStartOf="@+id/ratingBar"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
-        tools:text="2021-12-15" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/titleOverview"
-        style="@style/Details.Title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/overview"
-        app:layout_constraintEnd_toEndOf="@+id/detailsViewTitle"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsViewDates" />
+            <ImageView
+                android:id="@+id/detailsImageView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/movie_detail_poster_image_size"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+            </ImageView>
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/generic_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+                app:titleCentered="true"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/detailsViewTitle"
+                style="@style/Details.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginEnd="@dimen/medium_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detailsImageView"
+                tools:text="Avatar">
+
+            </com.google.android.material.textview.MaterialTextView>
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="@style/RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginTop="@dimen/small_margin"
+                android:numStars="10"
+                app:layout_constraintStart_toStartOf="@+id/detailsViewTitle"
+                app:layout_constraintTop_toBottomOf="@+id/detailsViewTitle"
+                tools:rating="8.35" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/detailsVoteAverage"
+                style="@style/MVMM.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin"
+                app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
+                app:layout_constraintStart_toEndOf="@+id/ratingBar"
+                app:layout_constraintTop_toTopOf="@+id/ratingBar"
+                tools:text="4.35 (1.19 k reviews)" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/detailsViewDates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"
+                app:layout_constraintStart_toStartOf="@+id/ratingBar"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+                tools:text="2021-12-15" />
 
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/titleOverview"
+                style="@style/Details.Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/overview"
+                app:layout_constraintEnd_toEndOf="@+id/detailsViewTitle"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detailsViewDates" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/detailsViewDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/medium_padding"
-            android:paddingEnd="0dp"
-            app:layout_constraintEnd_toEndOf="@+id/titleOverview"
-            app:layout_constraintStart_toStartOf="@+id/titleOverview"
-            app:layout_constraintTop_toBottomOf="@id/titleOverview"
-            tools:text="A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home." />
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/detailsViewDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/medium_padding"
+                android:paddingEnd="0dp"
+                app:layout_constraintEnd_toEndOf="@+id/titleOverview"
+                app:layout_constraintStart_toStartOf="@+id/titleOverview"
+                app:layout_constraintTop_toBottomOf="@id/titleOverview"
+                tools:text="A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home." />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/detailsWatch"
+                style="@style/MVMM.Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:gravity="center"
+                android:text="Watch Now"
+                app:layout_constraintEnd_toEndOf="@+id/detailsViewDescription"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detailsViewDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

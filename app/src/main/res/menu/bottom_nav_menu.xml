@@ -6,6 +6,12 @@
         android:icon="@drawable/ic_baseline_home_24"
         />
 
+    <item android:id="@+id/searchFragment"
+        android:title="Search"
+        android:icon="@drawable/ic_search"
+        />
+
+
     <item android:id="@+id/profile"
         android:title="Profile"
         android:icon="@drawable/ic_baseline_face_6_24"
@@ -15,4 +21,6 @@
         android:title="Settings"
         android:icon="@drawable/ic_baseline_settings_24"
         />
+
+
 </menu>

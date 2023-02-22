@@ -1,6 +1,7 @@
 package com.batueksi.tekrar.data.repository
 
 import com.batueksi.tekrar.data.api.ApiService
+import com.batueksi.tekrar.data.models.Content
 import com.batueksi.tekrar.helper.Constants
 import com.batueksi.tekrar.data.models.ContentList
 import com.batueksi.tekrar.data.models.ResultXX
@@ -64,5 +65,6 @@ class ContentsRepository @Inject constructor(private val apiService: ApiService)
         val upcomingList = upComingMovies.toContentList("Upcoming Movies")
         return listOf(popularList, tvShowList, upcomingList)
     }
+
 
 }

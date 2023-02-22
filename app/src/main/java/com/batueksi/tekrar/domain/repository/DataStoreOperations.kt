@@ -7,4 +7,5 @@ interface DataStoreOperations {
     suspend fun updateUIMode(uiMode: Int)
 
     fun getUIMode(): Flow<Int>
+
 }

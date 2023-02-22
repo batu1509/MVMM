@@ -2,12 +2,14 @@ package com.batueksi.tekrar.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.batueksi.tekrar.R
 import com.batueksi.tekrar.databinding.ListRowBinding
 import com.batueksi.tekrar.data.models.Content
 import com.batueksi.tekrar.data.models.ContentList

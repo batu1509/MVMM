@@ -1,6 +1,6 @@
 package com.batueksi.tekrar.data.models.searchmodel
 
-data class Result(
+data class Search(
     val adult: Boolean? = null,
     val backdrop_path: String? = null,
     val first_air_date: String? = null,
