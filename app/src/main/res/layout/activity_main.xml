@@ -7,6 +7,30 @@
     tools:context=".presentation.MainActivity">
 
 
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/search_results"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="search results"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        </LinearLayout>
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/circleCard"
         android:layout_width="wrap_content"
@@ -21,6 +45,7 @@
             android:layout_width="@dimen/_35sdp"
             android:layout_height="@dimen/_38sdp"
             android:src="@drawable/ic_baseline_account_circle_24" />
+
 
     </androidx.cardview.widget.CardView>
 

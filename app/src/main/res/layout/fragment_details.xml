@@ -78,6 +78,22 @@
                 app:layout_constraintTop_toTopOf="@+id/ratingBar"
                 tools:text="4.35 (1.19 k reviews)" />
 
+            <com.google.android.material.chip.Chip
+                android:id="@+id/detailsDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/urbanist_medium"
+                android:maxLines="1"
+                android:text="2h 35m"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/titleOverview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/detailsVoteAverage"
+                app:layout_constraintTop_toTopOf="@+id/detailsVoteAverage" />
+
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/detailsViewDates"
                 android:layout_width="wrap_content"
@@ -86,6 +102,7 @@
                 app:layout_constraintStart_toStartOf="@+id/ratingBar"
                 app:layout_constraintTop_toBottomOf="@+id/ratingBar"
                 tools:text="2021-12-15" />
+
 
 
             <com.google.android.material.textview.MaterialTextView

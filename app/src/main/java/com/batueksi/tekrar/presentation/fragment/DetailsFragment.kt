@@ -38,8 +38,9 @@ class DetailsFragment : Fragment() {
             binding.detailsViewTitle.text = moviemodel.title
             binding.detailsViewDates.text = moviemodel.release_date
             binding.detailsViewDescription.text = moviemodel.overview
+            binding.detailsDuration.text = handleRuntimeMovie(moviemodel.runtime)
             binding.ratingBar.rating = moviemodel.vote_average.toFloat()
-            binding.detailsVoteAverage.text = moviemodel.vote_average.toString()
+            binding.detailsVoteAverage.text = String.format("%.2f", moviemodel.vote_average)
             binding.detailsImageView.load("https://image.tmdb.org/t/p/w500${moviemodel.backdrop_path}"){
                 crossfade(true)
                 crossfade(1000)
@@ -51,7 +52,7 @@ class DetailsFragment : Fragment() {
             binding.detailsViewDates.text = tvmodel.last_air_date
             binding.detailsViewDescription.text = tvmodel.overview
             binding.ratingBar.rating = tvmodel.vote_average.toFloat()
-            binding.detailsVoteAverage.text = tvmodel.vote_average.toString()
+            binding.detailsVoteAverage.text = String.format("%.2f", tvmodel.vote_average)
             binding.detailsImageView.load("https://image.tmdb.org/t/p/w500${tvmodel.backdrop_path}"){
                 crossfade(true)
                 crossfade(1000)
@@ -68,6 +69,12 @@ class DetailsFragment : Fragment() {
         }
     }
 
+    private fun handleRuntimeMovie(runtime: Int?): String {
+        if (runtime == null) return "-"
+
+        val time = runtime / 60.0
+        return String.format("%.2fhr", time)
+    }
 }
 
 
