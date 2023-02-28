@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.batueksi.tekrar.R
 import com.batueksi.tekrar.databinding.ErrorLayoutBinding
 import com.batueksi.tekrar.databinding.SearchFragmentBinding
-import com.batueksi.tekrar.presentation.adapter.ListAdapter
 import com.batueksi.tekrar.presentation.adapter.SearchAdapter
 import com.batueksi.tekrar.presentation.adapter.SearchStateAdapter
 import com.batueksi.tekrar.presentation.viewmodel.SearchViewModel
@@ -41,6 +40,12 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         _binding = SearchFragmentBinding.inflate(inflater, container, false)
         errorbinding = ErrorLayoutBinding.inflate(inflater, container, false)
 
+        searchAdapter = SearchAdapter{
+            findNavController().navigate(R.id.action_searchFragment_to_detailsFragment, bundleOf("content_arg" to it.id))
+        }
+
+
+
         return binding.root
 
     }
@@ -52,7 +57,6 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         binding.searchView.requestFocus()
 
 
-        searchAdapter = SearchAdapter()
         binding.recyclerViewSearch.layoutManager = (GridLayoutManager(binding.root.context, 3));
 
         binding.recyclerViewSearch.adapter = searchAdapter.withLoadStateFooter(

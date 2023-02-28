@@ -7,20 +7,25 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.batueksi.tekrar.R
+import com.batueksi.tekrar.data.models.Content
 import com.batueksi.tekrar.data.models.searchmodel.Search
 import com.batueksi.tekrar.databinding.RecyclerRowBinding
 import com.bumptech.glide.Glide
 
 
-class SearchAdapter : PagingDataAdapter<Search, SearchAdapter.SearchViewHolder>(diffcallback) {
+class SearchAdapter(val onItemClick: (Search) -> Unit) : PagingDataAdapter<Search, SearchAdapter.SearchViewHolder>(diffcallback) {
 
-    inner class SearchViewHolder(private val binding: RecyclerRowBinding) : ViewHolder(binding.root) {
+    inner class SearchViewHolder(private val binding: RecyclerRowBinding, val onItemClick: (Search) -> Unit) : ViewHolder(binding.root) {
         fun bind(search: Search) {
             binding.apply {
             binding.textView.text = search.title
             Glide.with(imageView).load("https://image.tmdb.org/t/p/w500${search.poster_path}")
                 .placeholder(R.drawable.ic_image)
                 .into(imageView)
+
+                binding.root.setOnClickListener {
+                    onItemClick(search)
+                }
             }
         }
     }
@@ -40,7 +45,7 @@ class SearchAdapter : PagingDataAdapter<Search, SearchAdapter.SearchViewHolder>(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val binding = RecyclerRowBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return SearchViewHolder(binding)
+        return SearchViewHolder(binding, onItemClick)
     }
 
 
