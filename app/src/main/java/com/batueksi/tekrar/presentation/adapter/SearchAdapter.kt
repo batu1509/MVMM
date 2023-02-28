@@ -14,12 +14,6 @@ import com.bumptech.glide.Glide
 
 class SearchAdapter : PagingDataAdapter<Search, SearchAdapter.SearchViewHolder>(diffcallback) {
 
-//    private var onItemClickListener: ((Search)->Unit)? = null
-//
-//    fun setOnItemClickListener(listener: (Search)-> Unit){
-//        onItemClickListener = listener
-//    }
-
     inner class SearchViewHolder(private val binding: RecyclerRowBinding) : ViewHolder(binding.root) {
         fun bind(search: Search) {
             binding.apply {

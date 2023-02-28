@@ -33,8 +33,6 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_search"
         android:layout_width="match_parent"
@@ -46,6 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/recycler_row"
+            android:padding="4dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -8,17 +8,16 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.batueksi.tekrar.R
 import com.batueksi.tekrar.databinding.ItermMovieFooterStateBinding
-import com.batueksi.tekrar.databinding.RecyclerRowBinding
 
 
-class MovieFooterStateAdapter(private val retry: () -> Unit) :
-    LoadStateAdapter<MovieFooterStateAdapter.MovieFooterStateViewHolder>() {
+class SearchStateAdapter(private val retry: () -> Unit) :
+    LoadStateAdapter<SearchStateAdapter.SearchStateViewHolder>() {
 
-    override fun onBindViewHolder(holder: MovieFooterStateViewHolder, loadState: LoadState) { holder.bind(loadState) }
+    override fun onBindViewHolder(holder: SearchStateViewHolder, loadState: LoadState) { holder.bind(loadState) }
 
-    override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): MovieFooterStateViewHolder { return MovieFooterStateViewHolder.create(parent, retry) }
+    override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): SearchStateViewHolder { return SearchStateViewHolder.create(parent, retry) }
 
-    class MovieFooterStateViewHolder private constructor(private val binding: ItermMovieFooterStateBinding,  retry: () -> Unit) :
+    class SearchStateViewHolder private constructor(private val binding: ItermMovieFooterStateBinding,  retry: () -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
 
         init {
@@ -40,12 +39,12 @@ class MovieFooterStateAdapter(private val retry: () -> Unit) :
         }
 
         companion object {
-            fun create(parent: ViewGroup, retry: () -> Unit): MovieFooterStateViewHolder {
+            fun create(parent: ViewGroup, retry: () -> Unit): SearchStateViewHolder {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.iterm_movie_footer_state, parent, false)
                 val binding = ItermMovieFooterStateBinding.inflate(LayoutInflater.from(parent.context),parent,false)
 
-                return MovieFooterStateViewHolder(binding, retry)
+                return SearchStateViewHolder(binding, retry)
             }
         }
     }

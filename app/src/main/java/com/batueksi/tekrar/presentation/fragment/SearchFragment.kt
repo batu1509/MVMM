@@ -1,12 +1,10 @@
 package com.batueksi.tekrar.presentation.fragment
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
@@ -14,16 +12,14 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.batueksi.tekrar.R
-import com.batueksi.tekrar.data.models.searchmodel.Search
 import com.batueksi.tekrar.databinding.ErrorLayoutBinding
-import com.batueksi.tekrar.databinding.FragmentDetailsBinding
-import com.batueksi.tekrar.databinding.FragmentHomeBinding
 import com.batueksi.tekrar.databinding.SearchFragmentBinding
 import com.batueksi.tekrar.presentation.adapter.ListAdapter
-import com.batueksi.tekrar.presentation.adapter.MovieFooterStateAdapter
 import com.batueksi.tekrar.presentation.adapter.SearchAdapter
+import com.batueksi.tekrar.presentation.adapter.SearchStateAdapter
 import com.batueksi.tekrar.presentation.viewmodel.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -44,6 +40,7 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
     ): View {
         _binding = SearchFragmentBinding.inflate(inflater, container, false)
         errorbinding = ErrorLayoutBinding.inflate(inflater, container, false)
+
         return binding.root
 
     }
@@ -56,10 +53,10 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
 
 
         searchAdapter = SearchAdapter()
-        binding.recyclerViewSearch.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewSearch.layoutManager = (GridLayoutManager(binding.root.context, 3));
 
         binding.recyclerViewSearch.adapter = searchAdapter.withLoadStateFooter(
-            MovieFooterStateAdapter {
+            SearchStateAdapter {
                 searchAdapter.retry()
             }
         )
@@ -79,7 +76,6 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
                 errorbinding.textViewErrorMessageError.text = errorMessage
             }
         }
-
 
 
 
@@ -111,5 +107,7 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         })
 
     }
+
+
 }
 

@@ -78,27 +78,25 @@
                 app:layout_constraintTop_toTopOf="@+id/ratingBar"
                 tools:text="4.35 (1.19 k reviews)" />
 
-            <com.google.android.material.chip.Chip
+
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/detailsDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/urbanist_medium"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:drawableStart="@drawable/ic_time_black_24"
                 android:maxLines="1"
                 android:text="2h 35m"
-                android:textColor="?android:textColorPrimary"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/titleOverview"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/detailsVoteAverage"
-                app:layout_constraintTop_toTopOf="@+id/detailsVoteAverage" />
-
+                app:layout_constraintStart_toEndOf="@+id/detailsViewDates"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/detailsViewDates"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginTop="12dp"
+                android:drawableStart="@drawable/ic_calendar_black_24"
                 app:layout_constraintStart_toStartOf="@+id/ratingBar"
                 app:layout_constraintTop_toBottomOf="@+id/ratingBar"
                 tools:text="2021-12-15" />
@@ -111,6 +109,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/overview"
+                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="@+id/detailsViewTitle"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
