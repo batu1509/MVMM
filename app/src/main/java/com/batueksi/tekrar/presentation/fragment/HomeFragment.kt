@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.batueksi.tekrar.R
@@ -32,8 +33,24 @@ class HomeFragment : Fragment() {
 
         setUpRv()
         observeData()
+
+        binding.toolBarHome.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.toolbar_search_menu -> {
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragment2ToSearchFragment())
+                    true
+                }
+                else -> {
+                    false
+                }
+            }
+        }
+
+
         return binding.root
+
     }
+
 
 
     private fun observeData() {

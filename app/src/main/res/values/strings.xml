@@ -12,6 +12,8 @@
     <string name="language_spanish">Spanish</string>
     <string name="language_french">French</string>
     <string name="language_german">German</string>
+    <string name="tvNA">N/A</string>
+    <string name="tvNoSearchData">No search results</string>
 
     <string name="overview">Overview</string>
 </resources>
