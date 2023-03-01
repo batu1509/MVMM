@@ -9,13 +9,14 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.batueksi.tekrar.R
 import com.batueksi.tekrar.data.models.Content
 import com.batueksi.tekrar.data.models.searchmodel.Search
+import com.batueksi.tekrar.databinding.ItemMovieBinding
 import com.batueksi.tekrar.databinding.RecyclerRowBinding
 import com.bumptech.glide.Glide
 
 
 class SearchAdapter(val onItemClick: (Search) -> Unit) : PagingDataAdapter<Search, SearchAdapter.SearchViewHolder>(diffcallback) {
 
-    inner class SearchViewHolder(private val binding: RecyclerRowBinding, val onItemClick: (Search) -> Unit) : ViewHolder(binding.root) {
+    inner class SearchViewHolder(private val binding: ItemMovieBinding, val onItemClick: (Search) -> Unit) : ViewHolder(binding.root) {
         fun bind(search: Search) {
             binding.apply {
             binding.textView.text = search.title
@@ -44,7 +45,7 @@ class SearchAdapter(val onItemClick: (Search) -> Unit) : PagingDataAdapter<Searc
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
-        val binding = RecyclerRowBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ItemMovieBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return SearchViewHolder(binding, onItemClick)
     }
 

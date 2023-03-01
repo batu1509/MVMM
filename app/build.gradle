@@ -41,7 +41,6 @@ android {
 }
 
 def retrofitVersion = '2.9.0'
-def moshi_version = '1.9.3'
 
 dependencies {
 

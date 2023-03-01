@@ -44,10 +44,7 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
             findNavController().navigate(R.id.action_searchFragment_to_detailsFragment, bundleOf("content_arg" to it.id))
         }
 
-
-
         return binding.root
-
     }
 
     @ExperimentalCoroutinesApi
@@ -57,7 +54,7 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         binding.searchView.requestFocus()
 
 
-        binding.recyclerViewSearch.layoutManager = (GridLayoutManager(binding.root.context, 3));
+        binding.recyclerViewSearch.layoutManager = (GridLayoutManager(binding.root.context, 2));
 
         binding.recyclerViewSearch.adapter = searchAdapter.withLoadStateFooter(
             SearchStateAdapter {
@@ -86,8 +83,6 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         binding.toolBarSearch.setNavigationOnClickListener {
             it.findNavController().popBackStack()
         }
-
-
 
             binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
