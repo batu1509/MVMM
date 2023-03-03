@@ -21,7 +21,7 @@
         android:text="Popular Movies"
         android:paddingStart="1dp"
         android:layout_marginStart="1dp"
-        style="@style/MVMM.Title"
+        style="@style/MVVM.Title"
         android:textStyle="bold" />
 
 

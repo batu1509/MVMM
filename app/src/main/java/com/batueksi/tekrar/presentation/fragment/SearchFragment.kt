@@ -30,7 +30,6 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
     private lateinit var searchAdapter: SearchAdapter
     private var _binding : SearchFragmentBinding? = null
     private val binding get() = _binding!!
-    private lateinit var errorbinding: ErrorLayoutBinding
 
 
     override fun onCreateView(
@@ -38,7 +37,6 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         savedInstanceState: Bundle?
     ): View {
         _binding = SearchFragmentBinding.inflate(inflater, container, false)
-        errorbinding = ErrorLayoutBinding.inflate(inflater, container, false)
 
         searchAdapter = SearchAdapter{
             findNavController().navigate(R.id.action_searchFragment_to_detailsFragment, bundleOf("content_arg" to it.id))
@@ -65,16 +63,16 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         binding.swipeRefreshSearch.isEnabled = false
         searchAdapter.addLoadStateListener { state ->
             binding.swipeRefreshSearch.isRefreshing = state.source.refresh is LoadState.Loading
-            errorbinding.errorContainer.isVisible = state.source.refresh is LoadState.Error
-            binding.recyclerViewSearch.isVisible = !errorbinding.errorContainer.isVisible
+            binding.errorLayout.errorContainer.isVisible = state.source.refresh is LoadState.Error
+            binding.recyclerViewSearch.isVisible = !binding.errorLayout.errorContainer.isVisible
 
             if (state.source.refresh is LoadState.Error) {
-                errorbinding.btnRetryError.setOnClickListener {
+                binding.errorLayout.btnRetryError.setOnClickListener {
                     searchAdapter.retry()
                 }
 
                 val errorMessage = (state.source.refresh as LoadState.Error).error.message
-                errorbinding.textViewErrorMessageError.text = errorMessage
+                binding.errorLayout.textViewErrorMessageError.text = errorMessage
             }
         }
 

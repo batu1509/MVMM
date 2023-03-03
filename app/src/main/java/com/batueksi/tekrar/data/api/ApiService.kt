@@ -20,6 +20,9 @@ interface ApiService {
     @GET("tv/popular")
     suspend fun GetPopularTvShows(@Query("api_key") apiKey: String): Response<TvShow>
 
+    @GET("tv/top_rated")
+    suspend fun GetTopRatedTvShows(@Query("api_key") apiKey: String): Response<TvShow>
+
     @GET("movie/upcoming")
     suspend fun GetUpComingMovies(@Query("api_key") apiKey: String): Response<UpComingMovies>
 

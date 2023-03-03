@@ -36,7 +36,7 @@
         android:paddingVertical="@dimen/_10sdp"
         android:text="TextViewsssssssss"
         android:paddingEnd="@dimen/medium_padding"
-        android:textAppearance="@style/MVMM.H6"
+        android:textAppearance="@style/MVVM.H6"
         android:maxLines="1"/>
 
 </com.google.android.material.card.MaterialCardView>

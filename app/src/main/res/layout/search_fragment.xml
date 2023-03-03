@@ -14,6 +14,7 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/tool_bar_search"
             android:layout_width="match_parent"
+            android:background="@color/black"
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_24">
 
@@ -22,9 +23,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="4dp"
+                android:background="@color/colorGrey"
                 android:iconifiedByDefault="false"
                 android:closeIcon="@drawable/ic_close"
-                android:queryBackground="@android:color/transparent"
+                android:queryBackground="@color/colorGrey"
                 android:queryHint="Search a movie..."
                 android:searchIcon="@null" />
 
@@ -48,6 +50,8 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    <include layout="@layout/error_layout"/>
+    <include
+        android:id="@+id/error_layout"
+        layout="@layout/error_layout"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

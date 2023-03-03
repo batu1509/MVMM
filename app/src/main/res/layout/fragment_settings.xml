@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:subtitle="@string/settings"
-        app:subtitleTextAppearance="@style/MVMM.H5"
+        app:subtitleTextAppearance="@style/MVVM.H5"
         app:subtitleTextColor="?attr/colorOnBackground" />
 
 
@@ -28,7 +28,7 @@
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/switchDarkTheme"
-        style="@style/MVMM.H6"
+        style="@style/MVVM.H6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/large_padding"

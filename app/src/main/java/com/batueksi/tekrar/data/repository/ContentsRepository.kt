@@ -1,7 +1,6 @@
 package com.batueksi.tekrar.data.repository
 
 import com.batueksi.tekrar.data.api.ApiService
-import com.batueksi.tekrar.data.models.Content
 import com.batueksi.tekrar.helper.Constants
 import com.batueksi.tekrar.data.models.ContentList
 import com.batueksi.tekrar.data.models.ResultXX
@@ -28,6 +27,15 @@ class ContentsRepository @Inject constructor(private val apiService: ApiService)
         else
             emptyList()
     }
+
+    private suspend fun GetTopRatedTvShows(): List<ResultXX> {
+        val response = apiService.GetTopRatedTvShows(Constants.apikey)
+        return if (response.body() != null)
+            response.body()!!.results
+        else
+            emptyList()
+    }
+
 
     private suspend fun getUpcomingMovies(): List<com.batueksi.tekrar.data.models.Result> {
         val response = apiService.GetUpComingMovies(Constants.apikey)
@@ -60,10 +68,12 @@ class ContentsRepository @Inject constructor(private val apiService: ApiService)
         val popularMovies = getPopularMovies()
         val tvShows = getPopularTvShows()
         val upComingMovies = getUpcomingMovies()
+        val tvShowsTopRated = GetTopRatedTvShows()
         val popularList = popularMovies.toContentList("Popular Movies")
         val tvShowList = tvShows.toContentList1("TV Shows")
+        val tvShowTopRatedList = tvShowsTopRated.toContentList1("Latest Tv Shows")
         val upcomingList = upComingMovies.toContentList("Upcoming Movies")
-        return listOf(popularList, tvShowList, upcomingList)
+        return listOf(popularList, tvShowList, upcomingList, tvShowTopRatedList)
     }
 
 

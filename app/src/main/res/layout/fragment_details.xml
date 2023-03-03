@@ -69,7 +69,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/detailsVoteAverage"
-                style="@style/MVMM.Subtitle1"
+                style="@style/MVVM.Subtitle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/medium_margin"
@@ -129,7 +129,7 @@
 
             <TextView
                 android:id="@+id/detailsWatch"
-                style="@style/MVMM.Title"
+                style="@style/MVVM.Title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium_margin"
