@@ -6,6 +6,7 @@ import com.batueksi.tekrar.data.models.UpComingMovies
 import com.batueksi.tekrar.data.models.detailsmodel.MovieDetailsModel
 import com.batueksi.tekrar.data.models.searchmodel.SearchModel
 import com.batueksi.tekrar.data.models.tvshowdetailsmodel.TvShowDetails
+import com.batueksi.tekrar.data.models.videomodel.MovieVideo
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
 import retrofit2.http.GET
@@ -32,6 +33,11 @@ interface ApiService {
     @GET("tv/{tv_id}")
     suspend fun GetDetailsTvShows(@Path("tv_id") tvId: String, @Query("api_key") apiKey: String): Response<TvShowDetails>
 
+    @GET("movie/{movie_id}/videos")
+    suspend fun GetMovieVideos(@Path("movie_id") movieId : String, @Query("api_key") apiKey : String) : Response<MovieVideo>
+
+    @GET("movie/{tv_id}/videos")
+    suspend fun GetTvVideos(@Path("tv_id") tvId : String, @Query("api_key") apiKey : String) : Response<MovieVideo>
 
 
     @GET("search/multi")

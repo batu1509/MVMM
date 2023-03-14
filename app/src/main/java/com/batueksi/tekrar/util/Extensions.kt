@@ -1,9 +1,14 @@
 package com.batueksi.tekrar.util
 
+import android.content.Context
+import android.widget.Toast
+import com.batueksi.tekrar.R
 import com.batueksi.tekrar.data.models.Content
 import com.batueksi.tekrar.data.models.ContentList
 import com.batueksi.tekrar.data.models.Result
 import com.batueksi.tekrar.data.models.ResultXX
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 fun Result.toContent(): Content {
     return Content(
@@ -37,4 +42,10 @@ fun List<ResultXX>.toContentList1(title: String): ContentList {
         title = title,
         contents = map { it.toContent() }
     )
+}
+
+suspend fun showToast(context: Context) {
+    withContext(Dispatchers.Main) {
+        Toast.makeText(context, R.string.something_went_wrong, Toast.LENGTH_SHORT).show()
+    }
 }

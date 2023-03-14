@@ -29,6 +29,7 @@
                 app:layout_constraintTop_toTopOf="parent">
             </ImageView>
 
+
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/generic_toolbar"
                 android:layout_width="wrap_content"
@@ -38,22 +39,29 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-                app:titleCentered="true"
-                />
+                app:titleCentered="true" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/detailsViewTitle"
                 style="@style/Details.Title"
-                android:layout_width="match_parent"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium_margin"
                 android:layout_marginEnd="@dimen/medium_margin"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailsImageView"
                 tools:text="Avatar">
 
             </com.google.android.material.textview.MaterialTextView>
+
+<!--            <ImageView-->
+<!--                android:id="@+id/playVideo"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:src="@drawable/ic_baseline_play_circle_24"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/detailsViewTitle"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/detailsViewTitle" />-->
 
             <RatingBar
                 android:id="@+id/ratingBar"
@@ -83,11 +91,11 @@
                 android:id="@+id/detailsDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:drawableStart="@drawable/ic_time_black_24"
                 android:maxLines="1"
-                android:text="2h 35m"
+                android:text="@string/durations"
                 app:layout_constraintStart_toEndOf="@+id/detailsViewDates"
                 app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
@@ -101,15 +109,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/ratingBar"
                 tools:text="2021-12-15" />
 
-
+            <TextView
+                android:id="@+id/genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@+id/detailsDuration"
+                app:layout_constraintTop_toBottomOf="@id/ratingBar"
+                android:drawableStart="@drawable/ic_baseline_star_border_24"
+                tools:text="Action" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/titleOverview"
                 style="@style/Details.Title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/overview"
                 android:layout_marginTop="10dp"
+                android:text="@string/overview"
                 app:layout_constraintEnd_toEndOf="@+id/detailsViewTitle"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -127,17 +144,45 @@
                 app:layout_constraintTop_toBottomOf="@id/titleOverview"
                 tools:text="A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home." />
 
+
             <TextView
-                android:id="@+id/detailsWatch"
-                style="@style/MVVM.Title"
-                android:layout_width="0dp"
+                android:id="@+id/trailer_tag"
+                style="@style/Details.Title"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/medium_margin"
-                android:gravity="center"
-                android:text="Watch Now"
-                app:layout_constraintEnd_toEndOf="@+id/detailsViewDescription"
+                android:layout_margin="@dimen/_10sdp"
+                android:text="@string/trailer"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detailsViewDescription" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:contentDescription="play"
+                android:src="@drawable/ic_play_arrow"
+                app:backgroundTint="@color/primary"
+                app:borderWidth="1dp"
+                app:fabSize="mini"
+                app:layout_constraintBottom_toBottomOf="@+id/detailsImageView"
+                app:layout_constraintEnd_toEndOf="@+id/detailsImageView"
+                app:layout_constraintStart_toStartOf="@+id/detailsImageView"
+                app:layout_constraintTop_toTopOf="@+id/detailsImageView"
+                app:tint="@color/white" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/video_rcv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/trailer_tag"
+                tools:listitem="@layout/video_row_placeholder" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
