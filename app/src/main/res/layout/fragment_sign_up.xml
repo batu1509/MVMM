@@ -12,14 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailEt"
+            android:id="@+id/edit_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Type your Email"
@@ -39,7 +39,7 @@
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passET"
+            android:id="@+id/edit_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Type Your Password"
@@ -59,7 +59,7 @@
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/confirmPassEt"
+            android:id="@+id/edit_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Retype Your Password"
@@ -67,7 +67,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
+        android:id="@+id/button_continue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -89,6 +89,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/button_continue" />
+
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/button_continue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

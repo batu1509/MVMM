@@ -1,6 +1,6 @@
 package com.batueksi.tekrar.data.models.videomodel
 
-data class MovieVideoResult(
+data class Result(
     val id: String = "",
     val iso_3166_1: String = "",
     val iso_639_1: String = "",

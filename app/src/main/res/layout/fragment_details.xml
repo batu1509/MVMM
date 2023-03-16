@@ -145,16 +145,6 @@
                 tools:text="A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home." />
 
 
-            <TextView
-                android:id="@+id/trailer_tag"
-                style="@style/Details.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:text="@string/trailer"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detailsViewDescription" />
-
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabPlay"
                 android:layout_width="wrap_content"
@@ -170,18 +160,6 @@
                 app:layout_constraintStart_toStartOf="@+id/detailsImageView"
                 app:layout_constraintTop_toTopOf="@+id/detailsImageView"
                 app:tint="@color/white" />
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/video_rcv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/trailer_tag"
-                tools:listitem="@layout/video_row_placeholder" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,13 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.batueksi.tekrar.R
 import com.batueksi.tekrar.databinding.FragmentDetailsBinding
-import com.batueksi.tekrar.presentation.adapter.VideoAdapter
 import com.batueksi.tekrar.presentation.viewmodel.DetailsViewModel
 import com.batueksi.tekrar.util.YoutubePlay
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,8 +31,8 @@ class DetailsFragment : Fragment() {
         setupToolbar()
 
         binding.fabPlay.setOnClickListener {
-            if (viewModel.movievideodata.value != null && viewModel.movievideodata.value!!.movieVideoResults.isNotEmpty()) {
-                val video = YoutubePlay(viewModel.movievideodata.value!!.movieVideoResults.last().key)
+            if (viewModel.movievideodata.value != null && viewModel.movievideodata.value!!.results.isNotEmpty()) {
+                val video = YoutubePlay(viewModel.movievideodata.value!!.results.last().key)
                 video.show(childFragmentManager, "Video")
             } else {
                 Toast.makeText(
@@ -74,15 +70,9 @@ class DetailsFragment : Fragment() {
             }
 
         }
-        viewModel.movievideodata.observe(viewLifecycleOwner){MovieVideo->
-            binding.videoRcv.apply {
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                adapter = VideoAdapter(requireContext(),MovieVideo.movieVideoResults)
-            }
-        }
+
 
         viewModel.getTvShowById(detailsId.toString())
-//        viewModel.getTvVideoById(detailsId.toString())
         viewModel.tvdetaildata.observe(viewLifecycleOwner){tvmodel->
             binding.detailsViewTitle.text = tvmodel.name
             binding.detailsViewDates.text = tvmodel.last_air_date
@@ -99,12 +89,7 @@ class DetailsFragment : Fragment() {
                 crossfade(1000)
             }
         }
-//        viewModel.movievideodata.observe(viewLifecycleOwner){TvMovieVideo->
-//            binding.videoRcv.apply {
-//                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-//                adapter = VideoAdapter(requireContext(),TvMovieVideo.movieVideoResults)
-//            }
-//        }
+
     }
 
 

@@ -36,10 +36,6 @@ interface ApiService {
     @GET("movie/{movie_id}/videos")
     suspend fun GetMovieVideos(@Path("movie_id") movieId : String, @Query("api_key") apiKey : String) : Response<MovieVideo>
 
-    @GET("movie/{tv_id}/videos")
-    suspend fun GetTvVideos(@Path("tv_id") tvId : String, @Query("api_key") apiKey : String) : Response<MovieVideo>
-
-
     @GET("search/multi")
     fun searchFilms(@Query("query") query: String, @Query("api_key") apiKey: String, @Query("page") page: Int): Single<SearchModel>
 

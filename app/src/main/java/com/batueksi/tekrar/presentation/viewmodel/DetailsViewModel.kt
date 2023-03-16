@@ -51,12 +51,4 @@ class DetailsViewModel @Inject constructor(private val repository: ContentsRepos
         }
     }
 
-    fun getTvVideoById(tvId: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val result = repository.getVideosTv(tvId)
-            if (result != null)
-                _movievideodata.postValue(result!!)
-        }
-    }
-
 }

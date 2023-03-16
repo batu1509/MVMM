@@ -72,14 +72,6 @@ class ContentsRepository @Inject constructor(private val apiService: ApiService)
         return null
     }
 
-    suspend fun getVideosTv(tvId: String): MovieVideo? {
-        val response = apiService.GetTvVideos(tvId, Constants.apikey)
-        if (response.body() != null) {
-            return response.body()!!
-        }
-        return null
-    }
-
 
     suspend fun getAllLists(): List<ContentList> {
         val popularMovies = getPopularMovies()
