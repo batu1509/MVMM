@@ -31,11 +31,8 @@
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
         <action
-            android:id="@+id/action_splashFragment_to_homeFragment2"
-            app:destination="@id/homeFragment2"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popUpTo="@id/splashFragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_splashFragment_to_navigation_auth"
+            app:destination="@id/navigation_auth" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -47,14 +44,14 @@
             app:destination="@id/detailsFragment" />
     </fragment>
     <navigation android:id="@+id/navigation_auth"
-        app:startDestination="@id/signInFragment">
+        app:startDestination="@id/loginFragment">
         <fragment
-            android:id="@+id/signInFragment"
-            android:name="com.batueksi.tekrar.presentation.fragment.SignInFragment"
+            android:id="@+id/loginFragment"
+            android:name="com.batueksi.tekrar.presentation.fragment.LoginFragment"
             android:label="fragment_sign_in"
-            tools:layout="@layout/fragment_sign_in">
+            tools:layout="@layout/fragment_login">
             <action
-                android:id="@+id/action_signInFragment_to_signUpFragment"
+                android:id="@+id/action_loginFragment_to_signUpFragment"
                 app:destination="@id/signUpFragment" />
         </fragment>
         <fragment
@@ -62,5 +59,8 @@
             android:name="com.batueksi.tekrar.presentation.fragment.SignUpFragment"
             android:label="fragment_sign_up"
             tools:layout="@layout/fragment_sign_up" />
+        <action
+            android:id="@+id/action_global_homeFragment2"
+            app:destination="@id/homeFragment2" />
     </navigation>
 </navigation>

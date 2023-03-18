@@ -4,24 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.fragment.SignInFragment">
+    tools:context=".presentation.fragment.LoginFragment">
 
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
         android:padding="5dp"
         android:shadowColor="@color/black"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="12"
+        android:layout_marginTop="50dp"
         android:text="MVVM"
         android:textColor="@color/primary"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/emailLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,11 +30,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="250dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@id/textView2">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_email"
@@ -66,12 +65,12 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_login"
+        android:id="@+id/loginButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="10dp"
-        android:text="Sign In"
+        android:text="@string/login__login_button"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -80,15 +79,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordLayout" />
 
-    <TextView
-        android:id="@+id/text_forget"
+    <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Not Registered Yet , Sign Up !"
-        android:textColor="@color/black"
+        android:id="@+id/loginPb"
+        android:visibility="gone"
+        android:layout_margin="2dp"
+        app:layout_constraintStart_toStartOf="@id/loginButton"
+        app:layout_constraintTop_toTopOf="@id/loginButton"
+        app:layout_constraintEnd_toEndOf="@id/loginButton"
+        app:layout_constraintBottom_toBottomOf="@id/loginButton" />
+
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:text="@string/login__signup_button"
+        android:layout_marginBottom="40dp"
+        android:layout_marginHorizontal="16dp"
+        android:paddingVertical="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_login" />
 
