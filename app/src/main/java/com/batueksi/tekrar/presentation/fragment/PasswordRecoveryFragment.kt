@@ -7,24 +7,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.batueksi.tekrar.R
+import com.batueksi.tekrar.databinding.FragmentPasswordRecoveryBinding
 import com.batueksi.tekrar.databinding.FragmentSignUpBinding
-import com.batueksi.tekrar.presentation.viewmodel.SignUpViewModel
+import com.batueksi.tekrar.presentation.viewmodel.PasswordRecoveryViewModel
 import com.batueksi.tekrar.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SignUpFragment : Fragment() {
+class PasswordRecoveryFragment : Fragment() {
 
-    private lateinit var binding : FragmentSignUpBinding
-    private val viewModel: SignUpViewModel by viewModels()
+    private lateinit var binding : FragmentPasswordRecoveryBinding
+
+    private val viewModel: PasswordRecoveryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSignUpBinding.inflate(inflater, container, false)
 
+        binding = FragmentPasswordRecoveryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -35,15 +38,15 @@ class SignUpFragment : Fragment() {
         initListeners()
     }
 
-    private fun initObservers(){
-        viewModel.signUpState.observe(viewLifecycleOwner){state ->
-            when(state){
+    private fun initObservers() {
+        viewModel.passwordSent.observe(viewLifecycleOwner) { state ->
+            when(state) {
                 is Resource.Success -> {
                     handleLoading(isLoading = false)
                     activity?.onBackPressed()
                     Toast.makeText(
                         requireContext(),
-                        "Sign up success",
+                        "We have sent a link to reset your password",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -63,33 +66,31 @@ class SignUpFragment : Fragment() {
 
     private fun initListeners(){
         with(binding){
-            signUpButton.setOnClickListener {
-                handleSignUp()
-            }
             bBack.setOnClickListener {
                 activity?.onBackPressed()
+            }
+            bRecoverPassword.setOnClickListener {
+                handlePasswordRecovery()
             }
         }
     }
 
+    private fun handlePasswordRecovery(){
+        val email = binding.etEmail.text.toString()
 
-    private fun handleSignUp(){
-        val email = binding.editEmail.text.toString()
-        val password = binding.editPassword.text.toString()
-
-        viewModel.signUp(email, password)
+        viewModel.sendPasswordLink(email)
     }
 
     private fun handleLoading(isLoading:Boolean){
         with(binding){
             if (isLoading) {
-                signUpButton.text = ""
-                signUpButton.isEnabled = false
-                signUpPb.visibility = View.VISIBLE
+                bRecoverPassword.text = ""
+                bRecoverPassword.isEnabled = false
+                pbRecoverPassword.visibility = View.VISIBLE
             }else{
-                signUpPb.visibility = View.GONE
-                signUpButton.text = getString(R.string.login__signup_button)
-                signUpButton.isEnabled = true
+                pbRecoverPassword.visibility = View.GONE
+                bRecoverPassword.text = getString(R.string.passwordRecovery)
+                bRecoverPassword.isEnabled = true
             }
         }
     }

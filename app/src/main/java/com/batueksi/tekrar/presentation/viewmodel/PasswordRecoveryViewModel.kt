@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.batueksi.tekrar.data.models.auth.User
-import com.batueksi.tekrar.domain.usecase.FirebaseLoginUseCase
+import com.batueksi.tekrar.domain.usecase.FirebasePasswordRecoveryUseCase
 import com.batueksi.tekrar.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -14,18 +13,20 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val loginUseCase: FirebaseLoginUseCase): ViewModel() {
+class PasswordRecoveryViewModel @Inject constructor(
+    private val passwordRecoveryUseCase: FirebasePasswordRecoveryUseCase
+): ViewModel() {
 
+    private val _passwordSent: MutableLiveData<Resource<Boolean>> = MutableLiveData()
+    val passwordSent: LiveData<Resource<Boolean>>
+        get() = _passwordSent
 
-    private val _loginState: MutableLiveData<Resource<User>> = MutableLiveData()
-    val loginState: LiveData<Resource<User>>
-        get() = _loginState
-
-    fun login(email:String, password:String) {
+    fun sendPasswordLink(email: String) {
         viewModelScope.launch {
-            loginUseCase(email, password).onEach { state ->
-                _loginState.value = state
+            passwordRecoveryUseCase(email).onEach {
+                _passwordSent.value = it
             }.launchIn(viewModelScope)
         }
     }
+
 }

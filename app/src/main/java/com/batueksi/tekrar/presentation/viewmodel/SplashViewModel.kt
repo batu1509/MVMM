@@ -39,7 +39,7 @@ class SplashViewModel @Inject constructor(
     private fun getNavigateAfterSplashScreenDelay() {
         viewModelScope.launch {
             delay(SPLASH_SCREEN_DELAY)
-            _eventFlow.emit(SplashEvent.NavigateTo(SplashFragmentDirections.actionSplashFragmentToNavigationAuth()))
+            _eventFlow.emit(SplashEvent.NavigateTo(SplashFragmentDirections.actionSplashFragmentToLoginFragment()))
         }
     }
 }

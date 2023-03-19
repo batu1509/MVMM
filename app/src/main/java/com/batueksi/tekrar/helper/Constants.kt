@@ -6,6 +6,7 @@ object Constants {
     const val baseURL = "https://api.themoviedb.org/3/"
     const val UI_MODE_KEY = "ui_mode_key"
     const val SPLASH_SCREEN_DELAY = 3000L
-
     const val PREFERENCES_NAME = "mvmm_preferences_name"
+
+    const val USERS_COLLECTION = "users"
 }
