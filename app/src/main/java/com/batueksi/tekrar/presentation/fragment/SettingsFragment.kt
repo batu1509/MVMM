@@ -8,9 +8,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.batueksi.tekrar.R
 import com.batueksi.tekrar.databinding.FragmentSettingsBinding
 import com.batueksi.tekrar.presentation.viewmodel.SettingsViewModel
+import com.batueksi.tekrar.util.AlertDialogUtil
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -22,14 +25,35 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
     private val viewModel: SettingsViewModel by viewModels()
+    private lateinit var auth: FirebaseAuth
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSettingsBinding.bind(view)
-
+        auth = FirebaseAuth.getInstance()
         collectDataLifecycleAware()
         setListenerSwitch()
 
+
+        binding.Logout.setOnClickListener {
+            AlertDialogUtil.showAlertDialog(
+                context = requireContext(),
+                title = R.string.are_you_sure_log_out,
+                message = R.string.log_out_message,
+                positiveBtnMessage = R.string.log_out,
+                negativeBtnMessage = R.string.cancel,
+                onClickPositiveButton = {
+                    logout()
+                }
+            )
+        }
+
+    }
+
+    private fun logout() {
+        auth = FirebaseAuth.getInstance()
+        auth.signOut()
+        return findNavController().navigate(R.id.loginFragment)
     }
 
     private fun setListenerSwitch() {
@@ -61,6 +85,8 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             }
         }
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
