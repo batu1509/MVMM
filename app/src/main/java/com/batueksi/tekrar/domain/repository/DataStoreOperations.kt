@@ -8,4 +8,9 @@ interface DataStoreOperations {
 
     fun getUIMode(): Flow<Int>
 
+    suspend fun saveLoginInfo(uid: String)
+
+    fun getLoginInfo(): Flow<String?>
+
+    suspend fun  deleteLoginInfo()
 }

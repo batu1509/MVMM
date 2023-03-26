@@ -3,6 +3,7 @@ package com.batueksi.tekrar.domain.repository
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*
+import com.batueksi.tekrar.helper.Constants
 import com.batueksi.tekrar.helper.Constants.UI_MODE_KEY
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -39,5 +40,28 @@ class DataOperationsImpl @Inject constructor(
             uiMode
         }
     }
+
+    override suspend fun saveLoginInfo(uid: String) {
+        val key = stringPreferencesKey(Constants.LOGIN_KEY)
+        dataStore.edit {
+            it[key] = uid
+        }
+    }
+
+    override fun getLoginInfo(): Flow<String?> {
+        val key = stringPreferencesKey(Constants.LOGIN_KEY)
+        return dataStore.data.map {
+            it[key]
+        }
+    }
+
+    override suspend fun deleteLoginInfo() {
+        val key = stringPreferencesKey(Constants.LOGIN_KEY)
+        dataStore.edit {
+            it[key] = ""
+        }
+    }
+
+
 }
 

@@ -11,12 +11,15 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.batueksi.tekrar.R
 import com.batueksi.tekrar.databinding.FragmentSettingsBinding
+import com.batueksi.tekrar.domain.repository.DataStoreOperations
 import com.batueksi.tekrar.presentation.viewmodel.SettingsViewModel
 import com.batueksi.tekrar.util.AlertDialogUtil
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -26,14 +29,17 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private val binding get() = _binding!!
     private val viewModel: SettingsViewModel by viewModels()
     private lateinit var auth: FirebaseAuth
+    private lateinit var db : FirebaseDatabase
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSettingsBinding.bind(view)
         auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
         collectDataLifecycleAware()
         setListenerSwitch()
 
+        binding.userEmail.text = user?.email
 
         binding.Logout.setOnClickListener {
             AlertDialogUtil.showAlertDialog(
@@ -50,10 +56,11 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     }
 
-    private fun logout() {
+    private fun logout() = lifecycleScope.launch {
         auth = FirebaseAuth.getInstance()
         auth.signOut()
-        return findNavController().navigate(R.id.loginFragment)
+        viewModel.logoutUser()
+        findNavController().navigate(R.id.loginFragment)
     }
 
     private fun setListenerSwitch() {

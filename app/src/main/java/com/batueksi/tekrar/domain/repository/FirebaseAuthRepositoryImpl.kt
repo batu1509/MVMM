@@ -5,7 +5,8 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class FirebaseAuthRepositoryImpl @Inject constructor(
-    private val firebaseAuth : FirebaseAuth
+    private val firebaseAuth : FirebaseAuth,
+    private val dataStoreOperations: DataStoreOperations
 ): AuthRepository {
     override suspend fun login(email: String, password: String): String {
         return try {
@@ -15,6 +16,7 @@ class FirebaseAuthRepositoryImpl @Inject constructor(
                     userUID = it.user?.uid ?: ""
                 }
                 .await()
+            dataStoreOperations.saveLoginInfo(userUID)
             userUID
         }catch (e:Exception){
             ""
