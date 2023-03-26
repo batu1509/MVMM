@@ -12,7 +12,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -38,11 +37,6 @@ class SplashViewModel @Inject constructor(
             _eventFlow.emit(SplashEvent.UpdateUiMode(getUIModeUseCase().first()))
         }
     }
-
-//    private fun navigate() = viewModelScope.launch {
-//        delay(SPLASH_SCREEN_DELAY)
-//        _eventFlow.emit(getNavigateAfterSplashScreenDelay())
-//    }
 
     private fun getNavigateAfterSplashScreenDelay() {
         viewModelScope.launch {
