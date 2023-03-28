@@ -4,7 +4,6 @@ import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.batueksi.tekrar.domain.repository.DataStoreOperations
-import com.batueksi.tekrar.domain.usecase.GetUIModeUseCase
 import com.batueksi.tekrar.helper.Constants.SPLASH_SCREEN_DELAY
 import com.batueksi.tekrar.presentation.splash.SplashEvent
 import com.batueksi.tekrar.presentation.splash.SplashFragmentDirections
@@ -19,12 +18,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-    private val getUIModeUseCase: GetUIModeUseCase,
     private val dataStoreOperations: DataStoreOperations
 ) : ViewModel() {
     private val _eventFlow = MutableSharedFlow<SplashEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
-
 
     init {
         getNavigateAfterSplashScreenDelay()
@@ -34,7 +31,7 @@ class SplashViewModel @Inject constructor(
     @VisibleForTesting
     fun getUiMode() {
         viewModelScope.launch {
-            _eventFlow.emit(SplashEvent.UpdateUiMode(getUIModeUseCase().first()))
+            _eventFlow.emit(SplashEvent.UpdateUiMode(dataStoreOperations.getUIMode().first()))
         }
     }
 
