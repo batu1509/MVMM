@@ -33,24 +33,9 @@ class HomeFragment : Fragment() {
         setUpRv()
         observeData()
 
-        binding.toolBarHome.setOnMenuItemClickListener {
-            when (it.itemId) {
-                R.id.toolbar_search_menu -> {
-                    findNavController().navigate(HomeFragmentDirections.actionHomeFragment2ToSearchFragment())
-                    true
-                }
-                else -> {
-                    false
-                }
-            }
-        }
-
-
         return binding.root
 
     }
-
-
 
     private fun observeData() {
         viewModel.liveData.observe(viewLifecycleOwner) { contentList ->
