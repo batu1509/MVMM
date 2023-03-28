@@ -11,15 +11,13 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.batueksi.tekrar.R
 import com.batueksi.tekrar.databinding.FragmentSettingsBinding
-import com.batueksi.tekrar.domain.repository.DataStoreOperations
 import com.batueksi.tekrar.presentation.viewmodel.SettingsViewModel
 import com.batueksi.tekrar.util.AlertDialogUtil
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -29,7 +27,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private val binding get() = _binding!!
     private val viewModel: SettingsViewModel by viewModels()
     private lateinit var auth: FirebaseAuth
-    private lateinit var db : FirebaseDatabase
+    private lateinit var db: FirebaseFirestore
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
