@@ -48,26 +48,15 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/img_avatar"></ImageView>
+            android:src="@drawable/avatr"></ImageView>
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/urbanist_medium"
-            android:gravity="center"
-            android:text="Batuhan Ek"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/userEmail"
@@ -75,9 +64,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/urbanist_medium"
             android:gravity="center"
-            android:text="batu0000@gmail.com"
-            android:textColor="@color/gray"
-            android:textSize="15sp" />
+            android:text="Batuhan Ek"
+            android:textSize="20sp" />
 
         </LinearLayout>
     </LinearLayout>
