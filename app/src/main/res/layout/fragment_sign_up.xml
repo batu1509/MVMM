@@ -18,7 +18,7 @@
         android:shadowDy="0"
         android:shadowRadius="12"
         android:layout_marginTop="80dp"
-        android:text="MVMM"
+        android:text="@string/welcome"
         android:textColor="@color/primary"
         android:textSize="40sp"
         android:textStyle="bold"
