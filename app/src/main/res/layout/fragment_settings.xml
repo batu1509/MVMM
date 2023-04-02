@@ -2,23 +2,29 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/settingsBack"
-        style="@style/MVVM.Title"
+        android:id="@+id/settingsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="4dp"
-        android:padding="10dp"
-        android:textSize="24sp"
-        tools:text="Settings"
-        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        android:fontFamily="@font/urbanist_bold"
+        android:textSize="@dimen/_25sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:text="@string/settings"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/materialDivider"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsBack" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -64,7 +70,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/urbanist_medium"
             android:gravity="center"
-            android:text="Batuhan Ek"
+            android:text="user@gmail.com"
             android:textSize="20sp" />
 
         </LinearLayout>
