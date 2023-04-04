@@ -6,7 +6,7 @@
     app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/homeFragment2"
-        android:name="com.batueksi.tekrar.presentation.fragment.HomeFragment"
+        android:name="com.batueksi.moviesapp.presentation.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <argument
@@ -22,16 +22,16 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.batueksi.tekrar.presentation.fragment.DetailsFragment"
+        android:name="com.batueksi.moviesapp.presentation.fragment.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
     <fragment
         android:id="@+id/settingsFragment2"
-        android:name="com.batueksi.tekrar.presentation.fragment.SettingsFragment"
+        android:name="com.batueksi.moviesapp.presentation.fragment.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.batueksi.tekrar.presentation.splash.SplashFragment"
+        android:name="com.batueksi.moviesapp.presentation.fragment.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.batueksi.tekrar.presentation.fragment.SearchFragment"
+        android:name="com.batueksi.moviesapp.presentation.fragment.SearchFragment"
         android:label="search_fragment"
         tools:layout="@layout/search_fragment" >
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.batueksi.tekrar.presentation.fragment.LoginFragment"
+        android:name="com.batueksi.moviesapp.presentation.fragment.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -67,12 +67,12 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.batueksi.tekrar.presentation.fragment.SignUpFragment"
+        android:name="com.batueksi.moviesapp.presentation.fragment.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" />
     <fragment
         android:id="@+id/passwordRecoveryFragment"
-        android:name="com.batueksi.tekrar.presentation.fragment.PasswordRecoveryFragment"
+        android:name="com.batueksi.moviesapp.presentation.fragment.PasswordRecoveryFragment"
         android:label="fragment_password_recovery"
         tools:layout="@layout/fragment_password_recovery" />
 </navigation>

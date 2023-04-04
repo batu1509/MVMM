@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace 'com.batueksi.tekrar'
+    namespace 'com.batueksi.moviesapp'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.batueksi.tekrar"
+        applicationId "com.batueksi.moviesapp"
         buildConfigField "String", "API_KEY", "\" API_KEY\""
         minSdk 21
         targetSdk 33
