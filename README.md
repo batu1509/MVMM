@@ -16,7 +16,7 @@ Android app that offers movies and TV shows.
 
 [Glide](https://github.com/bumptech/glide): For image loading
 
-[Paging](https://developer.android.com/topic/libraries/architecture/paging/v3-overview): A customizable and easy to use BottomBar navigation view with sleek animations
+[Paging](https://developer.android.com/topic/libraries/architecture/paging/v3-overview): The Paging library helps you load and display pages of data from a larger dataset from local storage or over network
 
 [Retrofit](https://square.github.io/retrofit/): A type-safe  HTTP client  for Android and Java
 
