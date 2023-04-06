@@ -2,9 +2,9 @@ package com.batueksi.moviesapp.data.repository
 
 import androidx.paging.PagingState
 import androidx.paging.rxjava3.RxPagingSource
+import com.batueksi.moviesapp.BuildConfig
 import com.batueksi.moviesapp.data.api.ApiService
 import com.batueksi.moviesapp.data.models.searchmodel.Search
-import com.batueksi.moviesapp.helper.Constants.apikey
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 
@@ -16,7 +16,7 @@ class SearchPagingSource constructor(
     override fun loadSingle(params: LoadParams<Int>): Single<LoadResult<Int, Search>> {
         // starting page
         val page = params.key ?: 1
-        return apiService.searchFilms(query, apikey, page)
+        return apiService.searchFilms(query, BuildConfig.API_KEY, page)
             .subscribeOn(Schedulers.io())
             .map {
                 LoadResult.Page(

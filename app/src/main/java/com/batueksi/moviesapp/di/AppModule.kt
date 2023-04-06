@@ -1,5 +1,6 @@
 package com.batueksi.moviesapp.di
 
+import com.batueksi.moviesapp.BuildConfig
 import com.batueksi.moviesapp.data.api.ApiService
 import com.batueksi.moviesapp.helper.Constants
 import dagger.Module
@@ -19,7 +20,7 @@ import javax.inject.Singleton
 object AppModule {
 
     @Provides
-    fun provideBaseUrl() = Constants.baseURL
+    fun provideBaseUrl() = BuildConfig.BASE_URL
 
     @Provides
     @Singleton

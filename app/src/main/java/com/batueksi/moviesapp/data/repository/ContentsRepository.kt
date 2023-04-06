@@ -1,5 +1,6 @@
 package com.batueksi.moviesapp.data.repository
 
+import com.batueksi.moviesapp.BuildConfig
 import com.batueksi.moviesapp.data.api.ApiService
 import com.batueksi.moviesapp.helper.Constants
 import com.batueksi.moviesapp.data.models.ContentList
@@ -14,7 +15,7 @@ import javax.inject.Inject
 class ContentsRepository @Inject constructor(private val apiService: ApiService) {
 
     private suspend fun getPopularMovies(): List<com.batueksi.moviesapp.data.models.Result> {
-        val response = apiService.GetPopularMovies(Constants.apikey)
+        val response = apiService.GetPopularMovies(BuildConfig.API_KEY)
         return if (response.body() != null)
             response.body()!!.results
         else
@@ -22,7 +23,7 @@ class ContentsRepository @Inject constructor(private val apiService: ApiService)
     }
 
     private suspend fun getPopularTvShows(): List<ResultXX> {
-        val response = apiService.GetPopularTvShows(Constants.apikey)
+        val response = apiService.GetPopularTvShows(BuildConfig.API_KEY)
         return if (response.body() != null)
             response.body()!!.results
         else
@@ -30,7 +31,7 @@ class ContentsRepository @Inject constructor(private val apiService: ApiService)
     }
 
     private suspend fun GetTopRatedTvShows(): List<ResultXX> {
-        val response = apiService.GetTopRatedTvShows(Constants.apikey)
+        val response = apiService.GetTopRatedTvShows(BuildConfig.API_KEY)
         return if (response.body() != null)
             response.body()!!.results
         else
@@ -39,7 +40,7 @@ class ContentsRepository @Inject constructor(private val apiService: ApiService)
 
 
     private suspend fun getUpcomingMovies(): List<com.batueksi.moviesapp.data.models.Result> {
-        val response = apiService.GetUpComingMovies(Constants.apikey)
+        val response = apiService.GetUpComingMovies(BuildConfig.API_KEY)
         return if (response.body() != null)
             response.body()!!.results
         else
@@ -48,7 +49,7 @@ class ContentsRepository @Inject constructor(private val apiService: ApiService)
 
 
     suspend fun getDetailsMovies(movieId: String): MovieDetailsModel? {
-        val response = apiService.GetDetailsMovies(movieId, Constants.apikey)
+        val response = apiService.GetDetailsMovies(movieId, BuildConfig.API_KEY)
         if (response.body() != null) {
             return response.body()!!
         }
@@ -57,7 +58,7 @@ class ContentsRepository @Inject constructor(private val apiService: ApiService)
 
 
     suspend fun getDetailsTvShows(tvId: String): TvShowDetails? {
-        val response = apiService.GetDetailsTvShows(tvId, Constants.apikey)
+        val response = apiService.GetDetailsTvShows(tvId, BuildConfig.API_KEY)
         if (response.body() != null) {
             return response.body()!!
         }
@@ -65,7 +66,7 @@ class ContentsRepository @Inject constructor(private val apiService: ApiService)
     }
 
     suspend fun getVideosMovie(movieId: String): MovieVideo? {
-        val response = apiService.GetMovieVideos(movieId, Constants.apikey)
+        val response = apiService.GetMovieVideos(movieId, BuildConfig.API_KEY)
         if (response.body() != null) {
             return response.body()!!
         }
